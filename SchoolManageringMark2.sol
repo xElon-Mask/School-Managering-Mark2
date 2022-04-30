@@ -17,4 +17,7 @@ struct Student {
 
 Student[] private students;
 
+// Class => Course => Address
+mapping (string => mapping (string => address)) teachers;
+
 }
