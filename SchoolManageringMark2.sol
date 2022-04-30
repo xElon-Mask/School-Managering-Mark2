@@ -6,4 +6,15 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract SchoolManageringMark2 is Ownable {
 
+struct Student {
+    string name;
+    string class;
+    address addr;
+    uint noteBiology;
+    uint noteMaths;
+    uint noteFr;
+}
+
+Student[] private students;
+
 }
