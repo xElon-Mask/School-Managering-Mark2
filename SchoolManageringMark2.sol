@@ -42,4 +42,12 @@ function getStudentFromName(string memory _name) private view returns (uint) {
     return 0;
 }
 
+function stringsEquals(string memory _string1, string memory _string2) pure private returns (bool) {
+    bool test;
+    if (keccak256(abi.encodePacked(_string1)) == keccak256(abi.encodePacked(_string2))) {
+        test = true;
+    } 
+    return test;
+}
+
 }
