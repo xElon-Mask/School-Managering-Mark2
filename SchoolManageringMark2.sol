@@ -28,9 +28,18 @@ function addStudent(string memory _name, string memory _class, address _addr) pu
     emit studentAdded(_name, _class, _addr);
 }
 
-function setTeacher(string memory _class, string memory _course, address memory _addr) public onlyOwner {
+function setTeacher(string memory _class, string memory _course, address _addr) public onlyOwner {
     teachers[_class][_course] = _addr;
     emit teacherAdded(_class, _course, _addr);
+}
+
+function getStudentFromName(string memory _name) private view returns (uint) {
+    for (uint i = 0; i < students.length; i++) {
+        if(keccak256(abi.encodePacked(students[i].name)) == keccak256(abi.encodePacked(_name))) {
+            return i;
+        }
+    }
+    return 0;
 }
 
 }
