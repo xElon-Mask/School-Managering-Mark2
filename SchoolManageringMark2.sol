@@ -95,4 +95,12 @@ function calculateAverageStudent(string memory _name) public onlyOwner view retu
     return (students[idStudent].noteBiology + students[idStudent].noteMaths + students[idStudent].noteFr) / 3;
 }
 
+function isPassing(string memory _name) public onlyOwner view returns (bool) {
+    if (calculateAverageStudent(_name) >= 10) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 }
