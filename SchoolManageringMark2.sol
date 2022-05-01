@@ -68,5 +68,30 @@ function setNote(string memory _course, string memory _nameStudent, uint _note) 
         }
 }
 
+function calculateAveragePerCourse(string memory  _class, string memory _course) public view returns (uint) {
+    require(msg.sender == teachers[_class][_course], "you're not the teacher of this class course");
+    uint totalNote;
+    uint totalStudent;
+    for (uint i = 0; i < students.length; i++) {
+        if (stringsEquals(_course, "biology")) {
+            totalNote += students[i].noteBiology;
+            totalStudent += 1;
+        }
+        if (stringsEquals(_course, "maths")) {
+            totalNote += students[i].noteMaths;
+            totalStudent += 1;
+        }
+        if (stringsEquals(_course, "french")) {
+            totalNote += students[i].noteFr;
+            totalStudent += 1;
+        }
+    }
+    uint average = totalNote / totalStudent;
+    return average;
+} 
+
+
+
+
 
 }
