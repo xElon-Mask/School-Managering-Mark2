@@ -90,8 +90,9 @@ function calculateAveragePerCourse(string memory  _class, string memory _course)
     return average;
 } 
 
-
-
-
+function calculateAverageStudent(string memory _name) public onlyOwner view returns (uint) {
+    uint idStudent = getStudentFromName(_name);
+    return (students[idStudent].noteBiology + students[idStudent].noteMaths + students[idStudent].noteFr) / 3;
+}
 
 }
