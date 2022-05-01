@@ -103,4 +103,16 @@ function isPassing(string memory _name) public onlyOwner view returns (bool) {
     }
 }
 
+function calculateGlobalAverage(string memory _class) public view onlyOwner returns (uint) {
+    uint totalNote;
+    uint totalStudent;
+    for (uint i = 0; i < students.length; i++) {
+        if (stringsEquals(_class, students[i].class)) {
+            totalNote += students[i].noteBiology + students[i].noteMaths + students[i].noteFr;
+            totalStudent += 3;
+        }
+    }
+    return totalNote / totalStudent;
+}
+
 }
