@@ -50,4 +50,23 @@ function stringsEquals(string memory _string1, string memory _string2) pure priv
     return test;
 }
 
+function setNote(string memory _course, string memory _nameStudent, uint _note) public {
+    uint idStudent = getStudentFromName(_nameStudent);
+    require(msg.sender == teachers[students[idStudent].class][_course], "you're not the teacher of this student course");
+    if (stringsEquals(_course, "biology")) {
+        students[idStudent].noteBiology = _note;
+    }
+    else if (stringsEquals(_course, "maths")) {
+        students[idStudent].noteMaths = _note;
+
+    }
+    else if (stringsEquals(_course, "french")) {
+        students[idStudent].noteFr = _note;
+    }
+    else {
+        revert("type a real course");
+        }
+}
+
+
 }
